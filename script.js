@@ -48,19 +48,37 @@ while(!isWinner){
     // Выбор пользователя
     userChoice=prompt('Введите пожалуйста камень, ножницы или бумагу');
     userChoice=userChoice.toLowerCase();
-    console.log('User choice: ', userChoice);
     // Выбор компьютера
     let randomNum=Math.floor(Math.random()*3);
-    if(randomNum===0){
-        computerChoice='камень';
-    } else if(randomNum===1){
-        computerChoice='ножницы'
-    } else {
-        computerChoice='бумага'
+    // Как работает switch-конструкция (её удобно использовать если if-else большой, интерпретатор быстрее отработает):
+    // Ниже везде будут проставлены break для того, чтобы остановить выполнение switchcase. Если этого не сделать, то браузер будет проходить по всем до тех пор, пока не наткнется на break
+    switch (randomNum) {
+        case 0: {
+            computerChoice = 'камень';
+            break;
+        }
+        case 1: {
+            computerChoice='ножницы'; 
+            break;
+        }
+        case 2: {
+            computerChoice='бумага';
+            break;
+        }
     }
+    console.log('Random num: ', randomNum);
+    console.log('Computer choice: ', computerChoice);
+    console.log('User choice: ', userChoice);
+    // if(randomNum===0){
+    //     computerChoice='камень';
+    // } else if(randomNum===1){
+    //     computerChoice='ножницы'
+    // } else {
+    //     computerChoice='бумага'
+    // }
     // Сравниваем выборы и определяем победителя
     if(userChoice==='камень'||userChoice==='ножницы'||userChoice==='бумага'){
-        console.log('Computer choice: ', computerChoice);
+        alert('Computer choice: ' + computerChoice);
         if(userChoice===computerChoice){
             alert('Ничья!');
         } else if((userChoice==='камень' && computerChoice==='ножницы') ||
